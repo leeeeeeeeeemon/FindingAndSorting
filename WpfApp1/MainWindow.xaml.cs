@@ -25,15 +25,20 @@ namespace WpfApp1
         List<Employee> FiltredList = new List<Employee>();
 
         public Dictionary<string, int> Sortings {  get; set; }
+        int needAnomal = 1;
         public MainWindow()
         {
+
+
             InitializeComponent();
+
+            
             this.DataContext = this;
             List<Employee> employees = new List<Employee>();
-            employees.Add(new Employee{ EmployeeID = 0, FirstName="Emil", Name = "Kirill", Salary = 50000});
-            employees.Add(new Employee { EmployeeID = 1, FirstName = "Baryshev", Name = "Nikita", Salary = 20000 });
-            employees.Add(new Employee { EmployeeID = 2, FirstName = "Krut", Name = "Maksim", Salary = 60000 });
-            employees.Add(new Employee { EmployeeID = 3, FirstName = "Karpov", Name = "Danil", Salary = 100000 });
+            employees.Add(new Employee{ EmployeeID = 0, FirstName="Emil", Name = "Kirill", Salary = 50000, idAnimal = 1});
+            employees.Add(new Employee { EmployeeID = 1, FirstName = "Baryshev", Name = "Nikita", Salary = 20000, idAnimal = 2 });
+            employees.Add(new Employee { EmployeeID = 2, FirstName = "Krut", Name = "Maksim", Salary = 60000 , idAnimal = 1 });
+            employees.Add(new Employee { EmployeeID = 3, FirstName = "Karpov", Name = "Danil", Salary = 100000 , idAnimal = 2 });
             employeesList = employees.ToList();
 
             Sortings = new Dictionary<string, int>
@@ -45,10 +50,10 @@ namespace WpfApp1
                 {"Запрлата по убыванию", 5 },
 
             };
+            employeesList = employees.Where(x  => x.idAnimal == 1).ToList();
 
 
-
-            Employeers.ItemsSource = employees;
+            Employeers.ItemsSource = employeesList;
 
         }
 

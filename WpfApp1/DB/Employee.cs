@@ -12,5 +12,6 @@ namespace WpfApp1.DB
         public string Name { get; set; }
         public string FirstName { get; set; }
         public int Salary { get; set; }
+        public int idAnimal { get; set; }
     }
 }
